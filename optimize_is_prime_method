@@ -1,0 +1,46 @@
+// PrimeDirective.java
+// Import statement:
+import java.util.ArrayList;
+
+class PrimeDirective {
+
+  // Variable to store prime check result
+  boolean primZahl; 
+
+  // Method to check if a number is prime
+  public boolean isPrime(int number){
+    primZahl = true; 
+    if(number == 2){
+      // 2 is a prime number
+      primZahl = true;
+    }
+    else if(number < 2){
+      // Numbers less than 2 are not prime
+      primZahl = false;
+    }
+    else {
+      // Check divisors from 2 up to (but not including) the number
+      for(int n = 2; n < number; n++){ 
+        if(number % n == 0) { 
+          // Number is divisible, hence not prime
+          primZahl = false;
+          break; // Exit loop early for efficiency
+        }
+      }
+    }
+    return primZahl;
+  }
+
+  public static void main(String[] args) {
+    // Create an instance of PrimeDirective
+    PrimeDirective pd = new PrimeDirective();
+
+    // Array of test numbers
+    int[] numbers = {6, 29, 28, 33, 11, 100, 101, 43, 89};
+
+    // Test isPrime method on each number
+    for (int number : numbers) {
+      System.out.println(number + " is prime: " + pd.isPrime(number));
+    }
+  }  
+}
